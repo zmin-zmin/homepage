@@ -3,9 +3,10 @@ import { defineConfig } from 'vitepress'
 export default defineConfig({
   base: process.env.VITEPRESS_BASE ?? '/',
   lang: 'en-US',
-  title: 'Some University',
-  description: 'Official website powered by VitePress',
+  title: 'INUI Education',
+  description: 'INUI EDU Official website',
   lastUpdated: true,
+  appearance: false,
   themeConfig: {
     logo: '/images/logo.svg',
     nav: [
@@ -15,12 +16,9 @@ export default defineConfig({
       { text: 'Admission', link: '/admission/' },
       { text: 'News', link: '/news/' }
     ],
-    socialLinks: [
-      { icon: 'github', link: 'https://github.com/' }
-    ],
     footer: {
-      message: 'All rights reserved © ' + new Date().getFullYear() + ' Some University',
-      copyright: 'Address: No. 100 University Rd, Some City, Some Province | Zip: 000000'
+      message: 'All rights reserved © ' + new Date().getFullYear() + ' INUI Education',
+      copyright: 'Address: No. 347 Rd, Andrew City, | Zip: 430000'
     },
     sidebar: {
       '/about/': [
@@ -64,6 +62,7 @@ export default defineConfig({
   },
   head: [
     ['meta', { name: 'theme-color', content: '#0052D9' }],
+    ['meta', { name: 'color-scheme', content: 'light' }],
     ['link', { rel: 'icon', href: '/images/favicon.svg' }]
   ]
 })

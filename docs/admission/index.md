@@ -6,7 +6,7 @@ title: Admission
 
 ![Admission](/images/campus-3.svg)
 
-Welcome to apply to Some University. The admission brochure, program catalog, application methods, and admission status will be continuously updated on this page.
+Welcome to apply to INUI Education. The admission brochure, program catalog, application methods, and admission status will be continuously updated on this page.
 
 ## Undergraduate Admission
 

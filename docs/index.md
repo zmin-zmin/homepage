@@ -1,7 +1,7 @@
 ---
 layout: home
 hero:
-  name: Some University
+  name: INUI Education
   text: Seek Truth, Innovate, Excel
   tagline: Light up the future with knowledge
   image:
@@ -26,6 +26,6 @@ features:
     details: Extensive partnerships and exchange programs with leading universities worldwide.
 ---
 
-Welcome to the official website of Some University (preview).
+Welcome to the official website of INUI Education (preview).
 
 
