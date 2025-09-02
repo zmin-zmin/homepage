@@ -1,9 +1,8 @@
-name: Deploy VitePress to GitHub Pages
+name: Deploy VitePress site to Pages
 
 on:
   push:
-    branches: [ master, main ]
-  workflow_dispatch:
+    branches: ["main"]  # 触发分支，可以改成你用的分支
 
 permissions:
   contents: read
@@ -11,7 +10,7 @@ permissions:
   id-token: write
 
 concurrency:
-  group: pages
+  group: "pages"
   cancel-in-progress: true
 
 jobs:
@@ -21,40 +20,22 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup Node.js
+      - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: 'pnpm'
-
-      - name: Enable Corepack (pnpm)
-        run: corepack enable
-
-      - name: Set VitePress base path
-        run: |
-          repo="${{ github.event.repository.name }}"
-          if [[ "$repo" == *.github.io ]]; then
-            echo "VITEPRESS_BASE=/" >> $GITHUB_ENV
-          else
-            echo "VITEPRESS_BASE=/$repo/" >> $GITHUB_ENV
-          fi
+          cache: npm
 
       - name: Install dependencies
-        run: pnpm install --frozen-lockfile=false
+        run: npm install
 
-      - name: Build
-        run: pnpm docs:build
-        env:
-          VITEPRESS_BASE: ${{ env.VITEPRESS_BASE }}
-
-      - name: Add .nojekyll
-        run: |
-          touch docs/.vitepress/dist/.nojekyll
+      - name: Build VitePress site
+        run: npm run docs:build  # 默认 VitePress 命令是 docs:build
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: docs/.vitepress/dist
+          path: .vitepress/dist
 
   deploy:
     needs: build
@@ -66,5 +47,3 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-
-
